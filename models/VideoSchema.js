@@ -1,0 +1,42 @@
+const mongoose=require('mongoose');
+const VideoSchema=new mongoose.Schema(
+    {
+       thumbnail:{
+        type:String,
+        required:[true,"please Provide thumbnail"]
+       },
+       videoFile:{
+        type:String,
+        required:true,
+       },
+       owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+       },
+       title:{
+        type:String,
+        required:true,
+       },
+       description:{
+        type:String,
+        required:false
+       },
+       duration:{
+        type:Number,
+        required:true,
+       },
+       views:{
+        type:Number,
+        required:true,
+       },
+       isPublished:{
+        type:Boolean,
+        required:true
+       }
+       ,
+    },
+    {
+        timestamps:true
+    }
+)
+module.exports.Video=mongoose.model('Video',VideoSchema);
